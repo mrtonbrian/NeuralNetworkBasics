@@ -10,13 +10,26 @@ namespace NeuralNetworkBasics {
 
 class ReLU : public ActivationFunction {
 
-    Scalar activate(std::vector<Scalar> input, int index) {
-        return std::max((Scalar) 0, input[index]);
+    std::vector<Scalar> activate(std::vector<Scalar>& input) {
+        std::vector<Scalar> output;
+        output.reserve(input.size());
+
+        for (const Scalar& s : input) {
+            output.push_back(std::max((Scalar) 0, s));
+        }
+
+        return output;
     }
 
-    // Derivative of Sigmoid: (tanh(x))' = 1-tanh^2(x)
-    Scalar derivative(std::vector<Scalar> input, int index) {
-        return (input[index] <= 0) ? 0 : 1; 
+    std::vector<Scalar> get_gradient(std::vector<Scalar>& input) {
+        std::vector<Scalar> output;
+        output.reserve(input.size());
+
+        for (Scalar s : input) {
+            output.push_back((s <= 0) ? (Scalar) 0 : (Scalar) 1);
+        }
+
+        return output;
     }
 };
 

@@ -7,8 +7,8 @@
 namespace NeuralNetworkBasics {
 
 class ActivationFunction {
-    virtual Scalar activate(std::vector<Scalar> input);
-    virtual Scalar derivative(std::vector<Scalar> input);
+    virtual std::vector<Scalar> activate(std::vector<Scalar>& input);
+    virtual std::vector<Scalar> get_gradient(std::vector<Scalar>& input);
 };
 
 }

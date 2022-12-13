@@ -10,14 +10,24 @@ namespace NeuralNetworkBasics {
 
 class Tanh : public ActivationFunction {
 
-    Scalar activate(std::vector<Scalar> input, int index) {
-        return std::tanh(input[index]);
+    std::vector<Scalar> activate(std::vector<Scalar> input) {
+        std::vector<Scalar> output;
+        for (const Scalar& s : input) {
+            output.push_back(std::tanh(s));
+        }
+
+        return output;
     }
 
-    // Derivative of Sigmoid: (tanh(x))' = 1-tanh^2(x)
-    Scalar derivative(std::vector<Scalar> input, int index) {
-        Scalar activationValue = activate(input, index);
-        return 1 - (activationValue * activationValue);
+    std::vector<Scalar> get_gradient(std::vector<Scalar>& input) {
+        std::vector<Scalar> output = activate(input);
+
+        // Derivative of Tanh: (tanh(x))' = 1-tanh^2(x)
+        for (unsigned int i = 0; i < output.size(); i++) {
+            output[i] = 1 - (output[i] * output[i]);
+        }
+
+        return output;
     }
 };
 
