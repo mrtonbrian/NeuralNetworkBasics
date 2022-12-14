@@ -4,13 +4,12 @@
 #include <algorithm>
 #include <vector>
 #include "../Config.hpp"
-#include "../ActivationFunction.hpp"
 
 namespace NeuralNetworkBasics {
 
-class ReLU : public ActivationFunction {
+class ReLU {
 
-    std::vector<Scalar> activate(std::vector<Scalar>& input) {
+    static std::vector<Scalar> activate(std::vector<Scalar>& input) {
         std::vector<Scalar> output;
         output.reserve(input.size());
 
@@ -21,7 +20,7 @@ class ReLU : public ActivationFunction {
         return output;
     }
 
-    std::vector<Scalar> get_gradient(std::vector<Scalar>& input) {
+    static std::vector<Scalar> get_gradient(std::vector<Scalar>& input) {
         std::vector<Scalar> output;
         output.reserve(input.size());
 

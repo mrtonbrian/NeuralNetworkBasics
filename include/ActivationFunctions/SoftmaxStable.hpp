@@ -5,18 +5,17 @@
 #include <vector>
 #include <algorithm>
 #include "../Config.hpp"
-#include "../ActivationFunction.hpp"
 
 namespace NeuralNetworkBasics {
 
-class SoftmaxStable : public ActivationFunction {
+class SoftmaxStable {
 
     // Numerically stable Softmax from here:
     // https://eli.thegreenplace.net/2016/the-softmax-function-and-its-derivative/
     // Potential optimization: Precalculating softmax using offset (needs testing); Detailed below
     // offset = max + log(sum)
     // output[i] = exp(input[i] - offset)
-    std::vector<Scalar> activate(std::vector<Scalar> input) {
+    static std::vector<Scalar> activate(std::vector<Scalar> input) {
         std::vector<Scalar> output;
         output.reserve(input.size());
 
@@ -39,7 +38,7 @@ class SoftmaxStable : public ActivationFunction {
     }
 
     // O(N^2) :( - Wonder if there's a better way to do this; Probably by using a Linear Algebra Library?
-    std::vector<Scalar> get_gradient(std::vector<Scalar> input) {
+    static std::vector<Scalar> get_gradient(std::vector<Scalar> input) {
         std::vector<Scalar> activations = activate(input);
         std::vector<Scalar> output(input.size(), (Scalar) 0.);
         for (unsigned int i = 0; i < activations.size(); i++) {

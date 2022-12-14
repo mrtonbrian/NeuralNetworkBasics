@@ -3,11 +3,17 @@
 
 #include <vector>
 #include "Config.hpp"
-#include "ActivationFunction.hpp"
+#include "Helper.hpp"
 
 namespace NeuralNetworkBasics {
 
-class Layer {
+class ILayer {
+
+};
+
+template<class ActivationFunction>
+class Layer : public ILayer {
+    static_assert(is_activation(ActivationFunction), "Layer ActivationFunction parameter not valid!");
     protected:
     const int numInputNodes;
     const int numOutputNodes;
@@ -15,13 +21,10 @@ class Layer {
     std::vector<Scalar> weights; // Weights for incoming connections
     std::vector<Scalar> biases; // For each node
 
-    ActivationFunction activationFunction; // Our activation function
-
     public:
 
     // Constructor
-    Layer(int inputSize, int outputSize, ActivationFunction activation) : 
-        numInputNodes(inputSize), numOutputNodes(outputSize), activationFunction(activation) {}
+    Layer(int inputSize, int outputSize) : numInputNodes(inputSize), numOutputNodes(outputSize) {}
 };
 
 

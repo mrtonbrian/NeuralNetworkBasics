@@ -7,6 +7,8 @@ namespace NeuralNetworkBasics {
     #else
     typedef NNB_SCALAR Scalar;
     #endif
+
+    #define DEBUG_MODE
 }
 
 #endif

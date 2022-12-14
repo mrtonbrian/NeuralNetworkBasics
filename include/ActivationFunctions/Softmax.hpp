@@ -5,13 +5,12 @@
 #include <vector>
 #include <algorithm>
 #include "../Config.hpp"
-#include "../ActivationFunction.hpp"
 
 namespace NeuralNetworkBasics {
 
-class Softmax : public ActivationFunction {
+class Softmax {
 
-    std::vector<Scalar> activate(std::vector<Scalar> input) {
+    static std::vector<Scalar> activate(std::vector<Scalar> input) {
         std::vector<Scalar> output;
         output.reserve(input.size());
 
@@ -29,7 +28,7 @@ class Softmax : public ActivationFunction {
     }
 
     // O(N^2) :( - Wonder if there's a better way to do this; Probably by using a Linear Algebra Library?
-    std::vector<Scalar> get_gradient(std::vector<Scalar> input) {
+    static std::vector<Scalar> get_gradient(std::vector<Scalar> input) {
         std::vector<Scalar> activations = activate(input);
         std::vector<Scalar> output(input.size(), (Scalar) 0.);
         for (unsigned int i = 0; i < activations.size(); i++) {

@@ -4,11 +4,10 @@
 #include <cmath>
 #include <vector>
 #include "../Config.hpp"
-#include "../ActivationFunction.hpp"
 
 namespace NeuralNetworkBasics {
 
-class LeakyReLU : public ActivationFunction {
+class LeakyReLU {
 
     std::vector<Scalar> activate(std::vector<Scalar>& input) {
         std::vector<Scalar> output;
