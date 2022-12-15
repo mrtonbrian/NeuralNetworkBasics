@@ -50,8 +50,11 @@ class Layer : public ILayer {
         // So there are # input * # output weights
         // Mapping: input node i to output node j will have weight in slot (j * # output nodes) + i
         this->weights = std::vector<Scalar>(inputSize * outputSize);
+        this->weightGradients = std::vector<Scalar>(inputSize * outputSize);
+
         // Each node in the layer (output node) only has 1 bias
         this->biases = std::vector<Scalar>(outputSize); 
+        this->biasGradients = std::vector<Scalar>(outputSize);
 
         fillRandom(this->weights);
         fillRandom(this->biases);
@@ -61,12 +64,12 @@ class Layer : public ILayer {
         std::vector<Scalar> output(numOutputNodes, 0);
 
         // Apply each bias and weight
-        for (unsigned int i = 0; i < output.size(); i++) {
-            for (unsigned int j = 0; j < numInputNodes; j++) {
-                output[i] += getWeightIndex(j, i);
+        for (unsigned int out = 0; out < output.size(); out++) {
+            for (unsigned int inp = 0; j < numInputNodes; j++) {
+                output[out] += weights[getWeightIndex(inp, out)] * input[inp];
             }
 
-            output[i] += biases[i];
+            output[out] += biases[out];
         }
 
         return ActivationFunction::activate(output);
