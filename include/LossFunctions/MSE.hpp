@@ -11,7 +11,7 @@
 
 namespace NeuralNetworkBasics {
 
-class MSE {
+class MSE : public LossFunction {
     public:
     Scalar loss(std::vector<Scalar>& predicted, std::vector<Scalar>& expected) {
         // Only run this check in debug mode (defined in Config.hpp)
@@ -28,7 +28,7 @@ class MSE {
         return ((Scalar) 0.5) * sum / predicted.size();
     }
 
-    static std::vector<Scalar> get_gradient(std::vector<Scalar>& predicted, std::vector<Scalar>& expected) {
+    std::vector<Scalar> get_gradient(std::vector<Scalar>& predicted, std::vector<Scalar>& expected) {
         assert(predicted.size() == expected.size());
 
         std::vector<Scalar> output(predicted.size());

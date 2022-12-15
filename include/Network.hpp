@@ -11,9 +11,7 @@
 namespace NeuralNetworkBasics {
 
 class Network {
-    protected:
     std::vector<std::unique_ptr<ILayer>> layers;
-    
 };
 
 }

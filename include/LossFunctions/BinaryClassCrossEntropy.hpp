@@ -7,16 +7,17 @@
 #include <limits>
 #include "../Config.hpp"
 #include "../Helper.hpp"
+#include "../LossFunction.hpp"
 
 #include <assert.h>
 
 namespace NeuralNetworkBasics {
 
-class BinaryClassCrossEntropy {
+class BinaryClassCrossEntropy : public LossFunction {
 
     // References: https://ml-cheatsheet.readthedocs.io/en/latest/loss_functions.html#cross-entropy
     // https://towardsdatascience.com/cross-entropy-for-classification-d98e7f974451
-    static Scalar loss(std::vector<Scalar>& predicted, std::vector<Scalar>& expected) {
+    Scalar loss(std::vector<Scalar>& predicted, std::vector<Scalar>& expected) {
         // Only run this check in debug mode (NDEBUG defined in Config.hpp)
         assert(predicted.size() == expected.size());
 
@@ -29,7 +30,7 @@ class BinaryClassCrossEntropy {
         return -output;
     }
 
-    static std::vector<Scalar> get_gradient(std::vector<Scalar>& predicted, std::vector<Scalar>& expected) {
+    std::vector<Scalar> get_gradient(std::vector<Scalar>& predicted, std::vector<Scalar>& expected) {
         assert(predicted.size() == expected.size());
 
         std::vector<Scalar> output(predicted.size());
