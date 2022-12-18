@@ -1,6 +1,7 @@
 #include "Config.hpp"
 #include "Helper.hpp"
 #include "Layer.hpp"
+#include "LossFunction.hpp"
 
 #include "ActivationFunctions/LeakyReLU.hpp"
 #include "ActivationFunctions/ReLU.hpp"

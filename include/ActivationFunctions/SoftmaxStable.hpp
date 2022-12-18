@@ -9,7 +9,7 @@
 namespace NeuralNetworkBasics {
 
 class SoftmaxStable {
-
+    public:
     // Numerically stable Softmax from here:
     // https://eli.thegreenplace.net/2016/the-softmax-function-and-its-derivative/
     // Potential optimization: Precalculating softmax using offset (needs testing); Detailed below

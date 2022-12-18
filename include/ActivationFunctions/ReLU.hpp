@@ -8,7 +8,7 @@
 namespace NeuralNetworkBasics {
 
 class ReLU {
-
+    public:
     static std::vector<Scalar> activate(std::vector<Scalar>& input) {
         std::vector<Scalar> output;
         output.reserve(input.size());

@@ -9,7 +9,7 @@
 namespace NeuralNetworkBasics {
 
 class Softmax {
-
+    public:
     static std::vector<Scalar> activate(std::vector<Scalar> input) {
         std::vector<Scalar> output;
         output.reserve(input.size());

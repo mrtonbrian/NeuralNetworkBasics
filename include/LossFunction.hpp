@@ -1,5 +1,5 @@
-#ifndef LAYER_HPP_
-#define LAYER_HPP_
+#ifndef LOSS_FUNCTION_HPP_
+#define LOSS_FUNCTION_HPP_
 
 #include <vector>
 #include "Config.hpp"

@@ -8,7 +8,7 @@
 namespace NeuralNetworkBasics {
 
 class Tanh {
-
+    public:
     static std::vector<Scalar> activate(std::vector<Scalar> input) {
         std::vector<Scalar> output;
         for (const Scalar& s : input) {

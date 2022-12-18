@@ -9,7 +9,8 @@
 namespace NeuralNetworkBasics {
 
 class ILayer {
-
+    public:
+    virtual std::vector<Scalar> forward(std::vector<Scalar>& input) { return std::vector<Scalar>(); };
 };
 
 template<class ActivationFunction>
@@ -59,13 +60,13 @@ class Layer : public ILayer {
         fillRandom(this->weights);
         fillRandom(this->biases);
     }
-
-    vector<Scalar> forward(vector<Scalar> input) {
+    
+    std::vector<Scalar> forward(std::vector<Scalar>& input) {
         std::vector<Scalar> output(numOutputNodes, 0);
 
         // Apply each bias and weight
-        for (unsigned int out = 0; out < output.size(); out++) {
-            for (unsigned int inp = 0; j < numInputNodes; j++) {
+        for (int out = 0; out < numOutputNodes; out++) {
+            for (int inp = 0; inp < numInputNodes; inp++) {
                 output[out] += weights[getWeightIndex(inp, out)] * input[inp];
             }
 

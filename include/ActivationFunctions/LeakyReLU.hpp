@@ -8,7 +8,7 @@
 namespace NeuralNetworkBasics {
 
 class LeakyReLU {
-
+    public:
     std::vector<Scalar> activate(std::vector<Scalar>& input) {
         std::vector<Scalar> output;
         output.reserve(input.size());

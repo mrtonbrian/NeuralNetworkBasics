@@ -8,7 +8,7 @@
 namespace NeuralNetworkBasics {
 
 class Sigmoid {
-
+    public:
     // Sigmoid function: f(x) = 1/(1+e^(-x))
     static std::vector<Scalar> activate(std::vector<Scalar> input) {
         std::vector<Scalar> output;
